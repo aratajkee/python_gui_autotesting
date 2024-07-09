@@ -1,14 +1,9 @@
 import pyautogui
-import pyautogui as pag
-import time
-import pytesseract
 import string
-import platform
-from code_base_folder import default_functions as df
-from code_base_folder.time_and_date import time_date_select as tnd
+from code_base_folder import default_functions as df, time_date_select as tnd
 
 PATH = '/home/user/py/automate_gui/python_gui_autotesting/code_base_folder/first_init_menu/'
-
+PREFIX = 'screens_init/'
 pyautogui.PAUSE = 1
 
 
@@ -17,20 +12,20 @@ class FirstInitMenu:
         self.user = user
 
     def open_emu_window(self):
-        while not df.check_visible('ts_emu')[0]:
-            df.safe_click('ts_emu_icon')
+        while not df.check_visible('ts_emu', path_prefix=PREFIX)[0]:
+            df.safe_click('ts_emu_icon', path_prefix=PREFIX)
 
     def click_up(self):
-        df.safe_click('menu_up', min_search_time=1, repeat=1)
+        df.safe_click('menu_up', path_prefix=PREFIX, min_search_time=1, repeat=1)
 
     def click_down(self):
-        df.safe_click('menu_down', min_search_time=1, repeat=1)
+        df.safe_click('menu_down', path_prefix=PREFIX, min_search_time=1, repeat=1)
 
     def click_ok(self):
-        df.safe_click('menu_ok', min_search_time=1, repeat=1)
+        df.safe_click('menu_ok', path_prefix=PREFIX, min_search_time=1, repeat=1)
 
     def scroll_to_menu_option_and_click(self, filename: string):
-        while not df.check_visible(filename, min_search_time=1)[0]:
+        while not df.check_visible(filename, path_prefix=PREFIX, min_search_time=1)[0]:
             self.click_down()
         else:
             self.click_ok()
@@ -62,23 +57,23 @@ class SelectAlg:
         pass
 
     def select_gost(self):
-        while not df.check_visible('alg_gost'):
-            df.safe_click('arrow_right')
+        while not df.check_visible('alg_gost', path_prefix=PREFIX):
+            df.safe_click('arrow_right', path_prefix=PREFIX)
             pass
 
     def select_stb(self):
-        while not df.check_visible('alg_stb'):
-            df.safe_click('arrow_right')
+        while not df.check_visible('alg_stb', path_prefix=PREFIX):
+            df.safe_click('arrow_right', path_prefix=PREFIX)
 
 
 def test_initialization():
     fin = FirstInitMenu(user='АсРЗИ')
     fin.open_emu_window()
-    df.check_visible(filename='title')
+    df.check_visible(filename='title', path_prefix=PREFIX)
     fin.open_first_init()
     df.click_arrow_right()
 
-    df.check_visible('select_alg_title')
+    df.check_visible('select_alg_title', path_prefix=PREFIX)
     sel_alg = SelectAlg()
     sel_alg.select_gost()
 

@@ -1,7 +1,7 @@
-from ..first_init_menu import first_init_menu as fin
-from .. import default_functions as df
+def playground(a, b, c = None):
+    print(a)
+    print(b)
+    print(c)
 
-init_menu = fin.FirstInitMenu(user='АсРЗИ')
-df.check_visible(filename='title')
-init_menu.open_emu_window()
-init_menu.open_info()
+
+playground(1,2,3)
