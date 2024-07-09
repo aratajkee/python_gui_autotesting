@@ -3,6 +3,10 @@ import pyautogui as pag
 import time
 import pytesseract
 import string
+import platform
+from code import default_functions as df
+
+PATH = '/home/user/py/automate_gui/python_gui_autotesting/code/first_init_menu/'
 
 pyautogui.PAUSE = 1
 
@@ -11,43 +15,49 @@ class FirstInitMenu:
     def __init__(self, user: string):
         self.user = user
 
-    def check_visible(self, filename: string, confidence: float = 0.8, min_search_time: int = 2) -> tuple[bool, object]:
-        try:
-            full_filename = 'screens/' + filename + '.png'
-            target = pag.locateCenterOnScreen(full_filename, minSearchTime=min_search_time, confidence=confidence)
-            print(f"Found {filename} at location: {target}")
-            return True, target
-        except pag.ImageNotFoundException as ex:
-            print(f"Error finding image {filename}\nException: {ex}")
-            return False, object
-
-    def safe_click(self, filename: string, confidence: float = 0.8, min_search_time: int = 2, repeat: int = 1):
-        found, target = self.check_visible(filename, confidence, min_search_time)
-        if found:
-            for i in range(1, repeat):
-                pag.click(target)
-
     def open_emu_window(self):
-        while not self.check_visible('ts_emu')[0]:
-            self.safe_click('ts_emu_icon')
+        while not df.check_visible('ts_emu')[0]:
+            df.safe_click('ts_emu_icon')
 
     def click_up(self):
-        self.safe_click('menu_up', min_search_time=1, repeat=1)
+        df.safe_click('menu_up', full_path=PATH, min_search_time=1, repeat=1)
 
     def click_down(self):
-        self.safe_click('menu_down', min_search_time=1, repeat=1)
+        df.safe_click('menu_down', full_path=PATH, min_search_time=1, repeat=1)
 
     def click_ok(self):
-        self.safe_click('menu_ok', min_search_time=1, repeat=1)
+        df.safe_click('menu_ok', full_path=PATH, min_search_time=1, repeat=1)
 
-    def open_info(self):
-        while not self.check_visible('info_selected', min_search_time=1)[0]:
+    def scroll_to_menu_option_and_click(self, filename: string):
+        while not df.check_visible(filename, full_path=PATH, min_search_time=1)[0]:
             self.click_down()
         else:
             self.click_ok()
 
+    def open_first_init(self):
+        self.scroll_to_menu_option_and_click('first_init_selected')
+
+    def open_restore_kx(self):
+        self.scroll_to_menu_option_and_click('vosst_kx_selected')
+
+    def open_restore_from_reserved_copy(self):
+        self.scroll_to_menu_option_and_click('vosst_reserv_selected')
+
+    def open_return_to_factory_new(self):
+        self.scroll_to_menu_option_and_click('return_to_factory_new_selected')
+
+    def open_info(self):
+        self.scroll_to_menu_option_and_click('info_selected')
+
+    def open_turn_off(self):
+        self.scroll_to_menu_option_and_click('off_selected')
+
+    def open_reboot(self):
+        self.scroll_to_menu_option_and_click('reeboot_selected')
 
 fin = FirstInitMenu(user='АсРЗИ')
+df.check_visible(filename='title')
 fin.open_emu_window()
-fin.check_visible(filename='title')
 fin.open_info()
+
+
