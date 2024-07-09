@@ -28,7 +28,7 @@ class FirstInitMenu:
                 pag.click(target)
 
     def open_emu_window(self):
-        while not self.check_visible('ts_emu'):
+        while not self.check_visible('ts_emu')[0]:
             self.safe_click('ts_emu_icon')
 
     def click_up(self):
