@@ -4,9 +4,9 @@ import time
 import pytesseract
 import string
 import platform
-from code import default_functions as df
+from code_base_folder import default_functions as df
 
-PATH = '/home/user/py/automate_gui/python_gui_autotesting/code/first_init_menu/'
+PATH = '/home/user/py/automate_gui/python_gui_autotesting/code_base_folder/first_init_menu/'
 
 pyautogui.PAUSE = 1
 
