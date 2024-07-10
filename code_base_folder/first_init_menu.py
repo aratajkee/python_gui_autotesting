@@ -1,6 +1,9 @@
 import pyautogui
 import string
 from code_base_folder import default_functions as df, time_date_select as tnd, network_menu, create_account
+import pytesseract
+from PIL import Image
+import re
 
 PREFIX = 'screens_init/'
 pyautogui.PAUSE = 1
@@ -49,6 +52,29 @@ class FirstInitMenu:
 
     def open_reboot(self):
         self.scroll_to_menu_option_and_click('reeboot_selected')
+
+    def check_end_init(self):
+        df.wait_visible('end_init_title', path_prefix=PREFIX)
+        df.wait_visible('separate_kx', path_prefix=PREFIX)
+        df.wait_visible('export_sertificate', path_prefix=PREFIX)
+
+    def open_export_sertificate(self):
+        df.wait_click('export_sertificate', path_prefix=PREFIX)
+        df.wait_visible('device_to_export_title', path_prefix=PREFIX)
+
+    def find_device_on_screen(self, device_name: string) -> bool:
+        location = df.check_visible('device_to_export_name', path_prefix=PREFIX)[1]
+        device_name = re.sub(r'[^a-zA-Z0-9]', '', device_name)
+        screenshot = pyautogui.screenshot(region=(int(location.x - 85), int(location.y - 35), 200, 50),
+                                          imageFilename='screens/log/device_name.png')
+        device_name_found = pytesseract.image_to_string(screenshot, lang="rus+eng")
+        device_name_found = re.sub(r'[^a-zA-Z0-9]', '', device_name_found)
+        return device_name_found == device_name
+
+    def select_device_to_export(self, device_name: string):
+        df.safe_click('reload_btn', path_prefix=PREFIX)
+        while not self.find_device_on_screen(device_name):
+            df.safe_click('white_arrow_down', path_prefix=PREFIX)
 
 
 class SelectAlg:
@@ -119,5 +145,6 @@ def test_initialization():
     df.click_arrow_right()
 
 
-
-test_initialization()
+fin = FirstInitMenu(user='АсРЗИ')
+fin.select_device_to_export('/media/user/KINGSTON')
+# test_initialization()
