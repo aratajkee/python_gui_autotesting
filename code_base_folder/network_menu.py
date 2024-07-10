@@ -69,9 +69,9 @@ def check_ip(ip_expected: string):
                                                             ""), f"Expected ip: {ip_expected}\tbut found: {ip_found}"
 
 
-input_ip('192.168.203.128')
-df.click_arrow_right()
-check_ip('192.168.203.128')
+# input_ip('192.168.203.128')
+# df.click_arrow_right()
+# check_ip('192.168.203.128')
 
 
 # TODO CHECK SCREESHOT IP TEXT

@@ -1,6 +1,6 @@
 import pyautogui
 import string
-from code_base_folder import default_functions as df, time_date_select as tnd
+from code_base_folder import default_functions as df, time_date_select as tnd, network_menu
 
 PREFIX = 'screens_init/'
 pyautogui.PAUSE = 1
@@ -84,6 +84,12 @@ def test_initialization():
     df.click_arrow_right()
     df.click_arrow_right()
 
+    network_menu.open_ip_input()
+    network_menu.input_ip('198.168.203.128')
+    df.click_arrow_right()
+    network_menu.check_ip('198.168.203.128')
+    df.click_arrow_right()
+    df.click_arrow_right()
 
 
 test_initialization()
