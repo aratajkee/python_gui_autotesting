@@ -38,13 +38,22 @@ def input_pin(pin: string):
 
 # TODO Ввод метки
 def select_key(key_name: string):
-    match key_name:
-        case 'aib':
-            while not df.check_visible('aib_key', path_prefix=PREFIX)[0]:
-                df.safe_click('white_arrow_right', path_prefix=PREFIX)
-        case 'asrzi':
-            while not df.check_visible('asrzi_key', path_prefix=PREFIX)[0]:
-                df.safe_click('white_arrow_right', path_prefix=PREFIX)
-        case _:
-            print(f"Error! Wrong key name :{key_name}")
-#         TODO other keys
+    #     match key_name:
+    #         case 'aib':
+    #             while not df.check_visible('aib_key', path_prefix=PREFIX)[0]:
+    #                 df.safe_click('white_arrow_right', path_prefix=PREFIX)
+    #         case 'asrzi':
+    #             while not df.check_visible('asrzi_key', path_prefix=PREFIX)[0]:
+    #                 df.safe_click('white_arrow_right', path_prefix=PREFIX)
+    #         case _:
+    #             print(f"Error! Wrong key name :{key_name}")
+    # #         TODO other keys
+
+    if (key_name == 'asrzi'):
+        while not df.check_visible('aib_key', path_prefix=PREFIX)[0]:
+            df.safe_click('white_arrow_right', path_prefix=PREFIX)
+    elif (key_name == 'aib'):
+        while not df.check_visible('asrzi_key', path_prefix=PREFIX)[0]:
+            df.safe_click('white_arrow_right', path_prefix=PREFIX)
+    else:
+        print(f"Error! Wrong key name :{key_name}")
