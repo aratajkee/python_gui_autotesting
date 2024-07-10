@@ -5,7 +5,7 @@ import platform
 import string
 
 
-def check_visible(filename: string, path_prefix='', confidence: float = 0.8, min_search_time: int = 2) -> \
+def check_visible(filename: string, path_prefix=None, confidence=0.8, min_search_time=2) -> \
         tuple[bool, object]:
     try:
         if path_prefix is not None:
@@ -25,7 +25,7 @@ def check_visible(filename: string, path_prefix='', confidence: float = 0.8, min
         return False, (0, 0, 0, 0)
 
 
-def safe_click(filename: string, path_prefix=None, confidence: float = 0.8, min_search_time: int = 2,
+def safe_click(filename: string, path_prefix=None, confidence=0.8, min_search_time=2,
                repeat: int = 1):
     found, target = check_visible(filename=filename, path_prefix=path_prefix, confidence=confidence,
                                   min_search_time=min_search_time)
