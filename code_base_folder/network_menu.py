@@ -41,7 +41,7 @@ def clear_ip_cells():
     click_enter()
     click_enter()
     click_enter()
-    click_delete(repeat=12)
+    click_delete(repeat=15)
     df.check_visible('ip_empty', path_prefix=PREFIX)
 
 
