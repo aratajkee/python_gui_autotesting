@@ -92,6 +92,7 @@ def test_initialization():
     network_menu.check_ip('198.168.203.128')
     df.click_arrow_right()
     df.click_arrow_right()
+    df.click_arrow_right()
 
     create_account.check_page()
     create_account.open_pin_input()
@@ -102,6 +103,7 @@ def test_initialization():
     df.click_arrow_right()
     create_account.open_key_input()
     create_account.select_key('asrzi')
+    df.click_arrow_right()
     df.click_arrow_right()
     df.click_arrow_right()
 

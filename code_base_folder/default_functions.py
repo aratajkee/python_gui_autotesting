@@ -53,4 +53,4 @@ def click_arrow_left():
 
 
 def click_arrow_right():
-    wait_click('arrow_right')
+    wait_click('arrow_right', confidence=0.9)
