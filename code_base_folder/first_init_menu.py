@@ -2,7 +2,6 @@ import pyautogui
 import string
 from code_base_folder import default_functions as df, time_date_select as tnd
 
-PATH = '/home/user/py/automate_gui/python_gui_autotesting/code_base_folder/first_init_menu/'
 PREFIX = 'screens_init/'
 pyautogui.PAUSE = 1
 

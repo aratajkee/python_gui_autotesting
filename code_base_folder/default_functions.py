@@ -22,7 +22,7 @@ def check_visible(filename: string, path_prefix='', confidence: float = 0.8, min
         return True, target
     except pag.ImageNotFoundException as ex:
         print(f"Error finding image {filename}\nException: {ex}")
-        return False, object
+        return False, (0, 0, 0, 0)
 
 
 def safe_click(filename: string, path_prefix=None, confidence: float = 0.8, min_search_time: int = 2,
