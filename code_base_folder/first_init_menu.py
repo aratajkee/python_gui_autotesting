@@ -84,6 +84,7 @@ def test_initialization():
     df.click_arrow_right()
     df.click_arrow_right()
 
+    network_menu.open_ip_address_input()
     network_menu.open_ip_input()
     network_menu.input_ip('198.168.203.128')
     df.click_arrow_right()
