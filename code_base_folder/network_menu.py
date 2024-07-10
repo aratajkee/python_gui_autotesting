@@ -4,6 +4,7 @@ from code_base_folder import default_functions as df, time_date_select as tnd
 import time
 import pytesseract
 from PIL import Image
+import re
 
 pag.PAUSE = 1
 pag.FAILSAFE = True
@@ -63,13 +64,15 @@ def check_ip(ip_expected: string):
     screenshot = pag.screenshot(region=(int(location.x - 100), int(location.y - 50), 200, 150),
                                 imageFilename='screens/log/ip_input.png')
     ip_found = pytesseract.image_to_string(screenshot, lang='rus+eng')
+    ip_found = re.sub(r'[^0-9.]', '', ip_found)
     assert ip_expected == ip_found.replace(" ", "").replace("\n",
                                                             ""), f"Expected ip: {ip_expected}\tbut found: {ip_found}"
 
 
 input_ip('192.168.203.128')
 df.click_arrow_right()
-check_ip('5.253.2.2')
+check_ip('192.168.203.128')
+
 
 # TODO CHECK SCREESHOT IP TEXT
 
