@@ -18,6 +18,7 @@ def check_page():
     df.wait_visible('pin_admin', path_prefix=PREFIX)
     df.wait_visible('key', path_prefix=PREFIX)
 
+
 def open_pin_input():
     df.safe_click('pin', path_prefix=PREFIX)
     df.check_visible('pin_input_title', path_prefix=PREFIX)
@@ -31,6 +32,17 @@ def open_pin_admin_input():
 def open_key_input():
     df.safe_click('key', path_prefix=PREFIX)
     df.check_visible('key_input_title', path_prefix=PREFIX)
+
+
+def keyboard_switch_mode(mode: string):
+    if mode == 'eng':
+        if df.check_visible('keyboard_switch_eng', path_prefix=PREFIX):
+            df.safe_click('keyboard_switch_eng', path_prefix=PREFIX)
+    if mode == 'ru':
+        pass
+    if mode == 'num':
+        if df.check_visible('keyboard_switch_num', path_prefix=PREFIX):
+            df.safe_click('keyboard_switch_num', path_prefix=PREFIX)
 
 
 def click_num(num: string):
