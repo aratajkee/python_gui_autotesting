@@ -33,7 +33,7 @@ def click_enter():
 
 
 def click_delete(repeat=1):
-    df.safe_click('num_delete', path_prefix=PREFIX)
+    df.safe_click('num_delete', repeat=repeat, path_prefix=PREFIX)
 
 
 def clear_ip_cells():
@@ -57,18 +57,7 @@ def input_ip(ip: tuple[string, string, string, string]):
         click_enter()
 
 
-input_ip(('123','456','789','000'))
-
-
-
-
-
-
-
-
-
-
-
+input_ip(('123', '456', '789', '000'))
 
 # TODO CHECK SCREESHOT IP TEXT
 
