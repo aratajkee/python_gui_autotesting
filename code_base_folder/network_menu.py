@@ -8,9 +8,7 @@ import re
 
 pag.PAUSE = 1
 pag.FAILSAFE = True
-
 PREFIX = 'screens_network/'
-pag.PAUSE = 1
 
 
 def check_page():
