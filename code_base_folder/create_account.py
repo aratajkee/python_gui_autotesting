@@ -49,10 +49,10 @@ def select_key(key_name: string):
     #             print(f"Error! Wrong key name :{key_name}")
     # #         TODO other keys
 
-    if (key_name == 'asrzi'):
+    if (key_name == 'aib'):
         while not df.check_visible('aib_key', path_prefix=PREFIX)[0]:
             df.safe_click('white_arrow_right', path_prefix=PREFIX)
-    elif (key_name == 'aib'):
+    elif (key_name == 'asrzi'):
         while not df.check_visible('asrzi_key', path_prefix=PREFIX)[0]:
             df.safe_click('white_arrow_right', path_prefix=PREFIX)
     else:
