@@ -49,15 +49,27 @@ def click_num(num: string):
     df.safe_click(num_name, path_prefix=PREFIX, confidence=0.95)
 
 
-def input_ip(ip: tuple[string, string, string, string]):
+def input_ip(ip: string):
     clear_ip_cells()
+    segments = ip.split('.')
     for quart in ip:
         for num in quart:
             click_num(num)
         click_enter()
 
 
-input_ip(('123', '456', '789', '000'))
+def check_ip(ip_expected: string):
+    is_visible, location = df.check_visible('ip_input_block', path_prefix=PREFIX, confidence=0.6)
+    screenshot = pag.screenshot(region=(int(location.x - 100), int(location.y - 50), 200, 150),
+                                imageFilename='screens/log/ip_input.png')
+    ip_found = pytesseract.image_to_string(screenshot, lang='rus+eng')
+    assert ip_expected == ip_found.replace(" ", "").replace("\n",
+                                                            ""), f"Expected ip: {ip_expected}\tbut found: {ip_found}"
+
+
+input_ip('192.168.203.128')
+df.click_arrow_right()
+check_ip('5.253.2.2')
 
 # TODO CHECK SCREESHOT IP TEXT
 
