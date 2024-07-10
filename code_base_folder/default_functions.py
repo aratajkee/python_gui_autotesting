@@ -36,14 +36,21 @@ def safe_click(filename: string, path_prefix=None, confidence=0.8, min_search_ti
 
 
 # Ожидание видимости в бесконечном цыкле
-def wait_visible(filename: string, path_prefix=None, confidence=0.8):
+def wait_visible(filename: string, path_prefix=None, confidence=0.8) -> bool:
     while not check_visible(filename, path_prefix, confidence, min_search_time=1)[0]:
         pass
+    return True
+
+
+def wait_click(filename: string, path_prefix=None, confidence=0.8):
+    if wait_visible(filename, path_prefix, confidence):
+        safe_click(filename, path_prefix, confidence)
+
 
 # Повторяющиеся на разных страницах кнопки
 def click_arrow_left():
-    safe_click('arrow_left')
+    wait_click('arrow_left')
 
 
 def click_arrow_right():
-    safe_click('arrow_right')
+    wait_click('arrow_right')
