@@ -50,8 +50,8 @@ def click_num(num: string):
 
 
 def input_ip(ip: tuple[string, string, string, string]):
+    clear_ip_cells()
     for quart in ip:
-        clear_ip_cells()
         for num in quart:
             click_num(num)
         click_enter()
