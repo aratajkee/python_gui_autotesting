@@ -1,6 +1,6 @@
 import pyautogui
 import string
-from code_base_folder import default_functions as df, time_date_select as tnd, network_menu, create_account
+from code_base_folder import default_functions as df, time_date_select as tnd, network_menu, create_account, command_line_runner as clr
 import pytesseract
 from PIL import Image
 import re
@@ -92,6 +92,8 @@ class SelectAlg:
 
 
 def test_initialization():
+    clr.run_hsm()
+
     fin = FirstInitMenu(user='АсРЗИ')
     fin.open_emu_window()
     df.check_visible(filename='title', path_prefix=PREFIX)
