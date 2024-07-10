@@ -10,7 +10,7 @@ PREFIX = 'screens_date/'
 
 
 def check_page():
-    df.check_visible('time_and_date_page_title', path_prefix=PREFIX)
-    df.check_visible('date_block', path_prefix=PREFIX)
-    df.check_visible('time_block', path_prefix=PREFIX)
-    df.check_visible('time_zone_block', path_prefix=PREFIX)
+    df.wait_visible('time_and_date_page_title', path_prefix=PREFIX)
+    df.wait_visible('date_block', path_prefix=PREFIX)
+    df.wait_visible('time_block', path_prefix=PREFIX)
+    df.wait_visible('time_zone_block', path_prefix=PREFIX)

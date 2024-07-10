@@ -72,7 +72,7 @@ def test_initialization():
     fin.open_first_init()
     df.click_arrow_right()
 
-    df.check_visible('select_alg_title', path_prefix=PREFIX)
+    df.wait_visible('select_alg_title', path_prefix=PREFIX)
     sel_alg = SelectAlg()
     sel_alg.select_gost()
 
@@ -84,6 +84,7 @@ def test_initialization():
     df.click_arrow_right()
     df.click_arrow_right()
 
+    network_menu.check_page()
     network_menu.open_ip_address_input()
     network_menu.open_ip_input()
     network_menu.input_ip('198.168.203.128')

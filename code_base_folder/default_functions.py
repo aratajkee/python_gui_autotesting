@@ -35,6 +35,11 @@ def safe_click(filename: string, path_prefix=None, confidence=0.8, min_search_ti
             pag.click(target)
 
 
+# Ожидание видимости в бесконечном цыкле
+def wait_visible(filename: string, path_prefix=None, confidence=0.8):
+    while not check_visible(filename, path_prefix, confidence, min_search_time=1)[0]:
+        pass
+
 # Повторяющиеся на разных страницах кнопки
 def click_arrow_left():
     safe_click('arrow_left')

@@ -12,10 +12,10 @@ PREFIX = 'screens_network/'
 
 
 def check_page():
-    df.check_visible('network_title', path_prefix=PREFIX)
-    df.check_visible('name_block', path_prefix=PREFIX)
-    df.check_visible('ip_address_block', path_prefix=PREFIX)
-    df.check_visible('port_block', path_prefix=PREFIX)
+    df.wait_visible('network_title', path_prefix=PREFIX)
+    df.wait_visible('name_block', path_prefix=PREFIX)
+    df.wait_visible('ip_address_block', path_prefix=PREFIX)
+    df.wait_visible('port_block', path_prefix=PREFIX)
 
 
 def open_ip_address_input():
