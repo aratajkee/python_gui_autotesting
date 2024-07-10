@@ -1,6 +1,6 @@
 import pyautogui
 import string
-from code_base_folder import default_functions as df, time_date_select as tnd, network_menu
+from code_base_folder import default_functions as df, time_date_select as tnd, network_menu, create_account
 
 PREFIX = 'screens_init/'
 pyautogui.PAUSE = 1
@@ -91,6 +91,30 @@ def test_initialization():
     network_menu.check_ip('198.168.203.128')
     df.click_arrow_right()
     df.click_arrow_right()
+
+    create_account.check_page()
+    create_account.open_pin_input()
+    create_account.input_pin('11111111')
+    df.click_arrow_right()
+    create_account.open_pin_admin_input()
+    create_account.input_pin('87654321')
+    df.click_arrow_right()
+    create_account.open_key_input()
+    create_account.select_key('asrzi')
+    df.click_arrow_right()
+    df.click_arrow_right()
+
+    create_account.open_pin_input()
+    create_account.input_pin('11111111')
+    df.click_arrow_right()
+    create_account.open_pin_admin_input()
+    create_account.input_pin('87654321')
+    df.click_arrow_right()
+    create_account.open_key_input()
+    create_account.select_key('aib')
+    df.click_arrow_right()
+    df.click_arrow_right()
+
 
 
 test_initialization()

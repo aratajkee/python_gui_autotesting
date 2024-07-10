@@ -11,6 +11,13 @@ pag.FAILSAFE = True
 PREFIX = 'screens_account/'
 
 
+def check_page():
+    df.check_visible('title', path_prefix=PREFIX)
+    df.check_visible('mark', path_prefix=PREFIX)
+    df.check_visible('pin', path_prefix=PREFIX)
+    df.check_visible('pin_admin', path_prefix=PREFIX)
+    df.check_visible('key', path_prefix=PREFIX)
+
 def open_pin_input():
     df.safe_click('pin', path_prefix=PREFIX)
     df.check_visible('pin_input_title', path_prefix=PREFIX)
