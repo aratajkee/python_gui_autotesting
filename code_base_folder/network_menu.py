@@ -32,6 +32,16 @@ def click_enter():
     df.safe_click('num_enter', path_prefix=PREFIX)
 
 
+def click_delete():
+    df.safe_click('num_delete', path_prefix=PREFIX)
+
+
+def clear_ip_cell():
+    click_delete()
+    click_delete()
+    click_delete()
+
+
 def click_num(num: string):
     num_name = 'num_' + num
     df.safe_click(num_name, path_prefix=PREFIX, confidence=0.95)
@@ -39,6 +49,7 @@ def click_num(num: string):
 
 def input_ip(ip: tuple[string, string, string, string]):
     for quart in ip:
+        clear_ip_cell()
         for num in quart:
             click_num(num)
         click_enter()
