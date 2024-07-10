@@ -51,7 +51,7 @@ def click_num(num: string):
 
 def input_ip(ip: string):
     clear_ip_cells()
-    segments = ip.split('.')
+    ip = ip.split('.')
     for quart in ip:
         for num in quart:
             click_num(num)
