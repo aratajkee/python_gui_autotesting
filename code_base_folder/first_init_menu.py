@@ -144,7 +144,9 @@ def test_initialization():
     df.click_arrow_right()
     df.click_arrow_right()
 
-
-fin = FirstInitMenu(user='АсРЗИ')
-fin.select_device_to_export('/media/user/KINGSTON')
+    fin.check_end_init()
+    fin.open_export_sertificate()
+    fin.select_device_to_export('/media/user/KINGSTON')
+    df.click_arrow_right()
+    df.click_arrow_right()
 # test_initialization()
