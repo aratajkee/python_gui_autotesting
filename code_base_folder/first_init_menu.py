@@ -151,7 +151,5 @@ def test_initialization():
     fin.select_device_to_export('/media/user/KINGSTON')
     df.click_arrow_right()
     df.click_arrow_right()
-# test_initialization()
 
-print("asd")
-network_menu.check_ip('198.168.203.128')
+test_initialization()

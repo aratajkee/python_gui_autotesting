@@ -34,5 +34,3 @@ def auto_install(sudo_pass: string, login: string, password: string):
     pyautogui.write(sudo_pass, interval=0.25)
     pyautogui.press('enter')
 
-
-auto_install("123", "asd", "zxc")
