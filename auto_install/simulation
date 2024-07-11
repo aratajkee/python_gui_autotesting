@@ -1,0 +1,25 @@
+#!/bin/bash
+
+FILE_PATH_SIMULATOR="/etc/systemd/system/tamper_detector.service"
+SEARCH_TEXT_SIMULATOR="ExecStart=/usr/local/bin/tamper_detector"
+NEW_LINE_SIMULATOR="ExecStart=/usr/local/bin/tamper_detector_simulator"
+
+echo "$FILE_PATH_SIMULATOR"
+
+if [ ! -f "$FILE_PATH_SIMULATOR" ]; then
+	echo "File not found!"
+	exit 1
+fi
+
+sudo sed -i "s|.*$SEARCH_TEXT_SIMULATOR.*|$NEW_LINE_SIMULATOR|" "$FILE_PATH_SIMULATOR"
+
+echo "Line containing '$SEARCH_TEXT_SIMULATOR' in $FILE_PATH_SIMULATOR has been updated."
+
+sudo systemctl stop ic_server
+sleep 1
+sudo systemctl disable ic_server
+sleep 1
+sudo systemctl daemon-reload
+sleep 1
+echo "Перезагружаемся..."
+sudo reboot

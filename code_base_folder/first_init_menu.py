@@ -152,3 +152,6 @@ def test_initialization():
     df.click_arrow_right()
     df.click_arrow_right()
 # test_initialization()
+
+print("asd")
+network_menu.check_ip('198.168.203.128')

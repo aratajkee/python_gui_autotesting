@@ -10,5 +10,3 @@ def run_hsm():
     pag.write('123', interval=0.25)
     pag.press('enter')
 
-
-run_hsm()
