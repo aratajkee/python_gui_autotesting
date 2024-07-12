@@ -65,11 +65,14 @@ class FirstInitMenu:
     def find_device_on_screen(self, device_name: string) -> bool:
         location = df.check_visible('device_to_export_name', path_prefix=PREFIX)[1]
         device_name = re.sub(r'[^a-zA-Z0-9]', '', device_name)
-        screenshot = pyautogui.screenshot(region=(int(location.x - 85), int(location.y - 35), 200, 50),
+        screenshot = pyautogui.screenshot(region=(int(location.x - 85), int(location.y - 20), 200, 30),
                                           imageFilename='screens/log/device_name.png')
+        screenshot.save('screens/log/device_name.png')
         device_name_found = pytesseract.image_to_string(screenshot, lang="rus+eng")
         device_name_found = re.sub(r'[^a-zA-Z0-9]', '', device_name_found)
-        return device_name_found == device_name
+        print(f"DEVICE NAME FROM SCREENSHOT: {device_name_found}")
+        val = device_name_found == device_name
+        return val
 
     def select_device_to_export(self, device_name: string):
         df.safe_click('reload_btn', path_prefix=PREFIX)

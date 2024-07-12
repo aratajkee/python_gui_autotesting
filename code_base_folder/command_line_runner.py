@@ -9,4 +9,5 @@ def run_hsm():
     time.sleep(2)
     pag.write('123', interval=0.25)
     pag.press('enter')
+    pag.hotkey('win', 'd')
 

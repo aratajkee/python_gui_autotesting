@@ -61,25 +61,8 @@ def check_ip(ip_expected: string):
     is_visible, location = df.check_visible('ip_input_block', path_prefix=PREFIX, confidence=0.6)
     screenshot = pag.screenshot(region=(int(location.x - 100), int(location.y - 50), 200, 150),
                                 imageFilename='screens/log/ip_input.png')
+    screenshot.save('screens/log/ip_input.png')
     ip_found = pytesseract.image_to_string(screenshot, lang='rus+eng')
     ip_found = re.sub(r'[^0-9.]', '', ip_found)
     assert ip_expected == ip_found.replace(" ", "").replace("\n",
                                                             ""), f"Expected ip: {ip_expected}\tbut found: {ip_found}"
-
-
-# input_ip('192.168.203.128')
-# df.click_arrow_right()
-# check_ip('192.168.203.128')
-
-
-# TODO CHECK SCREESHOT IP TEXT
-
-# print(pytesseract.image_to_string(Image.open('screens/screens_network/ip_address_text_block.png'),lang='rus+eng'))
-# print(pytesseract.image_to_string(Image.open('screens/screens_network/img.png'),lang='rus+eng'))
-# print(pytesseract.image_to_string(Image.open('screens/screens_network/img_1.png'),lang='rus+eng'))
-# print(pytesseract.image_to_string(Image.open('screens/screens_network/img_2.png'),lang='rus+eng'))
-# print(pytesseract.image_to_string(Image.open('screens/screens_network/img_3.png'),lang='rus+eng'))
-
-
-# pag.moveTo(df.check_visible('ip_address_block', path_prefix=PREFIX)[1])
-# pag.moveTo(df.check_visible('ip_input_block', path_prefix=PREFIX)[1])
