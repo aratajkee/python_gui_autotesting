@@ -124,6 +124,7 @@ def test_initialization():
     df.click_arrow_right()
     df.click_arrow_right()
     df.click_arrow_right()
+    df.click_arrow_right()
 
     create_account.check_page()
     create_account.open_pin_input()
